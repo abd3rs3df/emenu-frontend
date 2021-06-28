@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Roter, Route } from "react-router-dom";
+
+import Order from "../src/components/order/order";
+import Home from "../src/components/home/home";
+
+import { useState } from "react";
+import MyContext from "./my-context";
 
 function App() {
+  // const { state, setState } = useState({});
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <MyContext.Provider value={{ order: {} }}>
+      <Roter>
+        <Route path="/" component={Home} exact />
+        <Route path="/index" component={Order} />
+      </Roter>
+    </MyContext.Provider>
   );
 }
-
 export default App;
